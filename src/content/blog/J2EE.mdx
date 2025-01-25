@@ -47,13 +47,17 @@ page：当前页。作用于当前页面，当前页面可见。
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 ```
 
-动作元素 `<jsp:include>             <jsp:forward>             <jsp:useBean>`
+动作元素
+
+```jsp
+`<jsp:include>             <jsp:forward>             <jsp:useBean>`
 
 `<jsp:include page="index.jsp" />`
 
 `<jsp:forward page="error.jsp" />`
 
 `<jsp:useBean id="user" class="com.example.User" scope="request" />`
+```
 
 **`<jsp:include>`** 与 `<%@ include %>`的区别：
 
@@ -61,34 +65,38 @@ page：当前页。作用于当前页面，当前页面可见。
 
 **是在请求处理期间插入内容，而不会影响作用域中的对象。**
 
-````jsp
+```jsp
 <%@ include file="include2.jsp" %> ：
+```
 
 **include指令是不能带参数** ， **include指令也不支持Servlet路径** 。
 **这是静态包含指令，表示在页面编译时将 `include2.jsp` 的内容直接包含到当前页面。它会将包含的 JSP 文件的内容合并到原文件，并保留 `pageContext` 作用域中的属性。**
 
+## EL表达式语言
 
-
-  ## EL表达式语言
-
+```
 每次访问都会执行 ` ${}  eg:<p>Welcome, ${username}!</p>`
 
 J2EE中，JSP EL表达式：s{(10*10) ne 100}的值是（ C ）。
 	a)	0								b)	True
 	c)	False							d)	1
+```
+
 **ne这里是not equal**
 
-  PageContext类
+## PageContext类
 
 属性相关函数：getAtrribute() setAttribute()
 
-获取隐含对象：`getOut() getResponse() getRequest() getSession() getServletContext() getServletConfig() `
+获取隐含对象：
+getOut() getResponse() getRequest()
+getSession() getServletContext() getServletConfig()
 
 异常：`getException()`
 
 `getPage() getELcontext()`
 
-  Servlet接口，Servlet原理，web.xml, web.xml文件中 `<context-param>`
+Servlet接口，Servlet原理，web.xml, web.xml文件中 `<context-param>`
 
 Servlet接口例子 包含三个：init service destroy
 
@@ -115,8 +123,7 @@ public class MyServlet extends HttpServlet {
         System.out.println("Servlet is being destroyed");
     }
 }
-
-````
+```
 
 ```xml
 <context-param>
